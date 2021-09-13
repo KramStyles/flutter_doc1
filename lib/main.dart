@@ -8,7 +8,6 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var wordPair = WordPair.random();
     return MaterialApp(
       title: 'Welcome to App',
       home: Scaffold(
@@ -16,9 +15,26 @@ class App extends StatelessWidget {
           title: const Text("Welcome To Flutter") ,
         ),
         body: Center(
-          child: Text(wordPair.asPascalCase),
+          // child: Text(wordPair.asPascalCase),
+          child: RandomWords(),
         ),
       )
     );
   }
 }
+
+class RandomWords extends StatefulWidget {
+  const RandomWords({Key? key}) : super(key: key);
+
+  @override
+  _RandomWordsState createState() => _RandomWordsState();
+}
+
+class _RandomWordsState extends State<RandomWords> {
+  @override
+  Widget build(BuildContext context) {
+    final wordPair = WordPair.random();
+    return Text(wordPair.asPascalCase);
+  }
+}
+
